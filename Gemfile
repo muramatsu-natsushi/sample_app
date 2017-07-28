@@ -2,11 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 gem 'rails'
-
-group :development do
-  gem 'sqlite3'
-end
-
+gem 'mysql2'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -15,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'listen'
 gem 'bootstrap-sass'
+gem 'devise'
 group :doc do
   gem 'sdoc', require: false
 
