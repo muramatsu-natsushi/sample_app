@@ -14,5 +14,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 group :doc do
   gem 'sdoc', require: false
-
 end
+gem 'faker'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
