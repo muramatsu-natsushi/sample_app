@@ -15,8 +15,23 @@ class UsersController < ApplicationController
      User.find(params[:id]).destroy
      flash[:success] = "User destroyed."
      redirect_to users_url
-   end
+  end
 
+  def following
+    @title = "Following"
+    @user =User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
+  def followers
+    @title = "followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
+  
    private
 
     def admin_user
