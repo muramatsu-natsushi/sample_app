@@ -23,8 +23,13 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
+  
+  def feed
+    Micropost.from_users_followed_by(self)
+  end
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :name,  presence: true, length: { maximum: 50 }
+  
 end
