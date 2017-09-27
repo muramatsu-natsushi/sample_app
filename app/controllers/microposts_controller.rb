@@ -13,11 +13,14 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+     Micropost.find(params[:id]).delete
+     flash[:success] = "micropost destroyed."
+     redirect_to request_referer
   end
 
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :image)
     end
 end

@@ -1,5 +1,10 @@
-<%= form_for(@micropost) do |f| %>
+<%= form_for @micropost, :html => { multipart: true } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <div>
+    <ul>
+      <li>ファイル選択：<%= f.file_field "image", type: :file %></li>
+    </ul>
+  </div>
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new micropost..." %>
   </div>

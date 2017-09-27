@@ -1,6 +1,18 @@
 <li>
   <span class="content"><%= micropost.content %></span>
+  <!-- 追加コード -->
+<% if micropost.image? %>
+  <div class="image">
+    <!-- ここではサイズをthumbに指定しています。設定はmicropost.rb -->
+    <%= image_tag micropost.image.url(:thumb) %>
+  </div>
+<% end %>
   <span class="timestamp">
     Posted <%= time_ago_in_words (micropost.created_at) %> ago.
   </span>
+  <% if current_user == micropost.user %>
+    <%= link_to "delete", micropost, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: micropost.content %>
+  <% end %>
 </li>
